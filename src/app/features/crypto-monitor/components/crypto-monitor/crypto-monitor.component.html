@@ -1,0 +1,88 @@
+<div class="crypto-monitor">
+  <!-- Header -->
+  <header class="monitor-header">
+    <div class="header-content">
+      <h1 class="main-title">
+        <span class="title-icon">₿</span>
+        Monitoreo de Criptoactivos
+      </h1>
+
+      <div class="header-status-bar">
+        <div class="status-item">
+          <span class="status-label">Total Activos:</span>
+          <span class="status-value">{{ assets().length }}</span>
+        </div>
+        <div class="separator">•</div>
+        <div class="status-item">
+          <span class="status-label">Alertas:</span>
+          <span class="status-value">{{ getConfiguredAlertsCount() }}</span>
+        </div>
+        <div class="separator">•</div>
+        <div class="status-item toggle-item" (click)="toggleUpdates()" [class.active]="isConnected()">
+          <div class="toggle-switch">
+            <div class="toggle-track"></div>
+            <div class="toggle-thumb"></div>
+          </div>
+          <span class="status-value">{{ isConnected() ? 'En vivo' : 'Pausado' }}</span>
+          @if (isConnected()) {
+          <span class="live-dot"></span>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Alert Summary -->
+    @if (triggeredAlerts().length > 0) {
+    <div class="alert-summary">
+      <span class="alert-count">{{ triggeredAlerts().length }}</span>
+      <span class="alert-text">{{ triggeredAlerts().length === 1 ? 'Alerta' : 'Alertas' }}</span>
+    </div>
+    }
+  </header>
+
+  <!-- Main Content -->
+  <div class="monitor-content">
+    <!-- Sidebar: Alert Configuration -->
+    <aside class="sidebar">
+      <app-alert-config [assets]="assets()" (thresholdChanged)="onThresholdChanged($event)" />
+
+      <!-- Top Gainers/Losers -->
+      <div class="highlights">
+        @if (topGainers().length > 0) {
+        <div class="highlight-section">
+          <h3 class="highlight-title">📈 Top Gainers</h3>
+          <div class="highlight-list">
+            @for (asset of topGainers(); track asset.id) {
+            <div class="highlight-item gain">
+              <span class="highlight-symbol">{{ asset.symbol }}</span>
+              <span class="highlight-change">+{{ asset.changePercent }}%</span>
+            </div>
+            }
+          </div>
+        </div>
+        }
+
+        @if (topLosers().length > 0) {
+        <div class="highlight-section">
+          <h3 class="highlight-title">📉 Top Losers</h3>
+          <div class="highlight-list">
+            @for (asset of topLosers(); track asset.id) {
+            <div class="highlight-item loss">
+              <span class="highlight-symbol">{{ asset.symbol }}</span>
+              <span class="highlight-change">{{ asset.changePercent }}%</span>
+            </div>
+            }
+          </div>
+        </div>
+        }
+      </div>
+    </aside>
+
+    <!-- Main Grid: Crypto Cards -->
+    <main class="main-grid">
+      @for (asset of assets(); track trackByAssetId($index, asset)) {
+      <app-crypto-card [asset]="asset" />
+      }
+    </main>
+  </div>
+</div>

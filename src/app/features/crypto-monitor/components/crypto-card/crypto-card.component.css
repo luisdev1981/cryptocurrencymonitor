@@ -1,0 +1,353 @@
+/**
+ * Crypto Card Styles
+ * 
+ * Diseño premium con glassmorphism y animaciones suaves
+ * Mejorado para mejor alineación y espaciado consistente
+ */
+
+.crypto-card {
+  /* Glassmorphism effect */
+  background: rgba(21, 25, 50, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 1.25rem;
+
+  /* Shadow and elevation */
+  box-shadow:
+    0 8px 32px 0 rgba(0, 0, 0, 0.37),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+
+  /* Smooth transitions */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout - altura fija para consistencia */
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  position: relative;
+  overflow: visible;
+  min-height: 320px;
+  height: 100%;
+}
+
+.crypto-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 12px 40px 0 rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Alert state */
+.crypto-card.alert-active {
+  border-color: rgba(255, 71, 87, 0.5);
+  box-shadow:
+    0 8px 32px 0 rgba(255, 71, 87, 0.3),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  animation: pulse-alert 2s ease-in-out infinite;
+}
+
+@keyframes pulse-alert {
+
+  0%,
+  100% {
+    box-shadow:
+      0 8px 32px 0 rgba(255, 71, 87, 0.3),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  }
+
+  50% {
+    box-shadow:
+      0 8px 32px 0 rgba(255, 71, 87, 0.6),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* Alert Badge - Mejorado */
+.alert-badge {
+  position: absolute;
+  top: 0.875rem;
+  right: 0.875rem;
+  background: linear-gradient(135deg, #ff4757 0%, #ff6348 100%);
+  color: white;
+  padding: 0.35rem 0.7rem;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  box-shadow: 0 4px 12px rgba(255, 71, 87, 0.4);
+  animation: bounce-in 0.5s ease-out;
+  cursor: help;
+  z-index: 10;
+  letter-spacing: 0.02em;
+}
+
+/* Alert Tooltip - Ajustado al ancho de la tarjeta */
+.alert-tooltip {
+  position: absolute;
+  top: 4rem;
+  left: 0;
+  right: 0;
+  width: calc(100% - 2.5rem);
+  margin: 0 1.25rem;
+  background: rgba(10, 14, 39, 0.98);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 0.875rem 1rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 71, 87, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-5px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: 100;
+  white-space: normal;
+  line-height: 1.5;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Mostrar tooltip al pasar mouse sobre el badge o la tarjeta */
+.crypto-card.alert-active:hover .alert-tooltip,
+.alert-badge:hover+.alert-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Tooltip arrow - alineado con el badge */
+.alert-tooltip::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  right: 1.5rem;
+  border: 6px solid transparent;
+  border-bottom-color: rgba(10, 14, 39, 0.98);
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.alert-icon {
+  font-size: 0.85rem;
+  animation: ring 1s ease-in-out infinite;
+}
+
+@keyframes ring {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  10%,
+  30% {
+    transform: rotate(-10deg);
+  }
+
+  20%,
+  40% {
+    transform: rotate(10deg);
+  }
+}
+
+/* Header - Mejorado */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-right: 4rem;
+  /* Espacio para el badge de alerta */
+  min-height: 3rem;
+}
+
+.crypto-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.crypto-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.crypto-symbol {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Price Section - Mejorado */
+.price-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding: 0.875rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  min-height: 5.5rem;
+  justify-content: center;
+}
+
+.price {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  transition: all 0.3s ease;
+  line-height: 1.1;
+}
+
+/* Change Indicator - Mejorado */
+.change {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 0.35rem 0.7rem;
+  border-radius: 8px;
+  width: fit-content;
+  letter-spacing: 0.01em;
+}
+
+.change.positive {
+  background: rgba(0, 255, 136, 0.12);
+  color: #00ff88;
+  border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.change.negative {
+  background: rgba(255, 71, 87, 0.12);
+  color: #ff4757;
+  border: 1px solid rgba(255, 71, 87, 0.2);
+}
+
+.change-icon {
+  font-size: 0.7rem;
+  font-weight: 900;
+}
+
+.change-value {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Statistics Section - Mejorado */
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.625rem;
+  margin-top: 0.25rem;
+  flex: 1;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+  min-height: 4rem;
+  justify-content: center;
+}
+
+.stat-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.stat-value {
+  font-size: 0.9rem;
+  color: #ffffff;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+/* Threshold Info - Mejorado */
+.threshold-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 0.875rem;
+  background: rgba(58, 123, 213, 0.08);
+  border: 1px solid rgba(58, 123, 213, 0.25);
+  border-radius: 10px;
+  font-size: 0.8rem;
+  margin-top: auto;
+  min-height: 2.5rem;
+}
+
+.threshold-label {
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.threshold-value {
+  color: #5a9bef;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .crypto-card {
+    padding: 1rem;
+    min-height: 300px;
+  }
+
+  .price {
+    font-size: 1.5rem;
+  }
+
+  .crypto-name {
+    font-size: 1rem;
+  }
+
+  .card-header {
+    padding-right: 3.5rem;
+  }
+}

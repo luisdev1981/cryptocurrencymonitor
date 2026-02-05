@@ -1,0 +1,65 @@
+<div class="crypto-card" [class.alert-active]="asset.isAlertTriggered">
+  <!-- Alert Badge and Tooltip -->
+  @if (asset.isAlertTriggered) {
+  <div class="alert-badge" [title]="getAlertMessage()">
+    <span class="alert-icon">🔔</span>
+    <span class="alert-text">¡Alerta!</span>
+  </div>
+
+  <!-- Tooltip fuera del badge para abarcar todo el ancho de la tarjeta -->
+  <div class="alert-tooltip">
+    {{ getAlertMessage() }}
+  </div>
+  }
+
+  <!-- Header -->
+  <div class="card-header">
+    <div class="crypto-info">
+      <h3 class="crypto-name">{{ asset.name }}</h3>
+      <span class="crypto-symbol">{{ asset.symbol }}</span>
+    </div>
+  </div>
+
+  <!-- Price Section with Highlight Directive -->
+  <div class="price-section">
+    <div class="price" appHighlightChange [currentPrice]="asset.price" [previousPrice]="asset.previousPrice">
+      {{ asset.price | cryptoCurrency }}
+    </div>
+
+    <!-- Change Percentage -->
+    <div class="change" [class.positive]="asset.changePercent > 0" [class.negative]="asset.changePercent < 0">
+      @if (asset.changePercent > 0) {
+      <span class="change-icon">▲</span>
+      } @else if (asset.changePercent < 0) { <span class="change-icon">▼</span>
+        }
+        <span class="change-value">{{ asset.changePercent > 0 ? '+' : '' }}{{ asset.changePercent }}%</span>
+    </div>
+  </div>
+
+  <!-- Statistics Section -->
+  @if (asset.movingAverage !== undefined || asset.volatility !== undefined) {
+  <div class="stats-section">
+    @if (asset.movingAverage !== undefined) {
+    <div class="stat-item">
+      <span class="stat-label">Promedio Móvil</span>
+      <span class="stat-value">{{ asset.movingAverage | cryptoCurrency }}</span>
+    </div>
+    }
+
+    @if (asset.volatility !== undefined) {
+    <div class="stat-item">
+      <span class="stat-label">Volatilidad</span>
+      <span class="stat-value">{{ asset.volatility | cryptoCurrency }}</span>
+    </div>
+    }
+  </div>
+  }
+
+  <!-- Alert Threshold Info -->
+  @if (asset.alertThreshold !== undefined) {
+  <div class="threshold-info">
+    <span class="threshold-label">Umbral:</span>
+    <span class="threshold-value">{{ asset.alertThreshold | cryptoCurrency }}</span>
+  </div>
+  }
+</div>

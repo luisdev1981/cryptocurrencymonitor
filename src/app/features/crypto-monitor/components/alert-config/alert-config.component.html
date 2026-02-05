@@ -1,0 +1,36 @@
+<div class="alert-config">
+  <div class="config-header">
+    <h2 class="config-title">⚡ Configurar Alertas</h2>
+    <p class="config-description">Define umbrales de precio para recibir alertas visuales</p>
+  </div>
+
+  <div class="config-list">
+    @for (asset of assets; track asset.id) {
+    <div class="config-item">
+      <div class="item-header">
+        <div class="asset-info">
+          <span class="asset-name">{{ asset.symbol }}</span>
+          <span class="current-price">${{ asset.price.toFixed(2) }}</span>
+        </div>
+
+        @if (asset.isAlertTriggered) {
+        <div class="alert-indicator">
+          <span class="alert-dot"></span>
+        </div>
+        }
+      </div>
+
+      <div class="threshold-input-group">
+        <input type="number" class="threshold-input" [value]="asset.alertThreshold || ''"
+          (input)="onThresholdChange(asset.id, $any($event.target).value)" placeholder="Umbral" step="0.01" />
+
+        @if (asset.alertThreshold !== undefined) {
+        <button class="clear-btn" (click)="clearThreshold(asset.id)" title="Limpiar umbral">
+          ✕
+        </button>
+        }
+      </div>
+    </div>
+    }
+  </div>
+</div>

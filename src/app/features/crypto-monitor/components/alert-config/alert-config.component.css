@@ -1,0 +1,212 @@
+.alert-config {
+  background: rgba(21, 25, 50, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.config-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.config-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.02em;
+}
+
+.config-description {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.config-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 350px);
+  /* Ajuste dinámico para que quepa en pantalla */
+  padding-right: 0.5rem;
+}
+
+/* Scrollbar fino para la lista */
+.config-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.config-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.config-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.config-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.config-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.asset-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.asset-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.current-price {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+
+.threshold-input-group {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  width: 100%;
+}
+
+.threshold-input {
+  flex: 1;
+  width: 100%;
+  /* Asegura que ocupe el espacio disponible */
+  min-width: 0;
+  /* Evita desbordamiento en flexbox */
+  padding: 0.5rem 0.75rem;
+  /* Reducido para un look más compacto y minimalista */
+  background: rgba(255, 255, 255, 0.03);
+  /* Fondo más sutil */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  /* Borde más sutil */
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  font-variant-numeric: tabular-nums;
+  box-sizing: border-box;
+  height: 36px;
+  /* Altura fija para consistencia */
+}
+
+.threshold-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(58, 123, 213, 0.5);
+  box-shadow: 0 0 0 2px rgba(58, 123, 213, 0.1);
+  /* Sombra más sutil */
+}
+
+.threshold-input::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 0.8rem;
+}
+
+/* Chrome, Safari, Edge, Opera - hide spin buttons */
+.threshold-input::-webkit-outer-spin-button,
+.threshold-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox - hide spin buttons */
+.threshold-input[type=number] {
+  appearance: textfield;
+}
+
+.clear-btn {
+  padding: 0;
+  background: rgba(255, 71, 87, 0.15);
+  border: 1px solid rgba(255, 71, 87, 0.3);
+  border-radius: 6px;
+  color: #ff4757;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  /* Coincide con altura del input */
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.clear-btn:hover {
+  background: rgba(255, 71, 87, 0.25);
+  border-color: rgba(255, 71, 87, 0.5);
+}
+
+.alert-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem;
+  background: rgba(255, 71, 87, 0.1);
+  border: 1px solid rgba(255, 71, 87, 0.3);
+  border-radius: 50%;
+  animation: pulse-bg 2s infinite;
+}
+
+@keyframes pulse-bg {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 6px rgba(255, 71, 87, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 71, 87, 0);
+  }
+}
+
+.alert-dot {
+  width: 8px;
+  height: 8px;
+  background: #ff4757;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .config-item {
+    gap: 0.75rem;
+  }
+}
