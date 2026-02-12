@@ -6,7 +6,7 @@
 > Yolimar Ramos C.I: 12.400.107
 > Luis Villarroel C.I: 16.313.858
 >  </br>
-> 
+> Programación III M1_Informática-Sección 6y7B-2025-2
 
 # Monitoreo CriptoActivo
 
