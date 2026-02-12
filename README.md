@@ -2,7 +2,10 @@
 > Criptoactivos </br>
 > Curso: Programación III </br>
 > Puntos de evaluación: 6 pts </br>
-> Estudiante: [Nombre del Estudiante] </br>
+> Estudiantes:
+> Yolimar Ramos C.I: 12.400.107
+> Luis Villarroel C.I: 16.313.858
+>  </br>
 > ID: [ID del Estudiante]
 
 # Monitoreo CriptoActivo
