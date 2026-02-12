@@ -6,7 +6,7 @@
 > Yolimar Ramos C.I: 12.400.107
 > Luis Villarroel C.I: 16.313.858
 >  </br>
-> ID: [ID del Estudiante]
+> 
 
 # Monitoreo CriptoActivo
 
